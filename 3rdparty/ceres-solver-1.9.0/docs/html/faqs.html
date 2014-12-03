@@ -1,0 +1,505 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FAQS, Tips &amp; Tricks &mdash; Ceres Solver</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Ceres Solver" href="index.html"/>
+        <link rel="next" title="Contributing" href="contributing.html"/>
+        <link rel="prev" title="Solving" href="solving.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> Ceres Solver</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="features.html">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building.html">Building &amp; Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="building.html#getting-the-source-code">Getting the source code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building.html#building-on-linux">Building on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building.html#building-on-mac-os-x">Building on Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building.html#building-on-windows-with-visual-studio">Building on Windows with Visual Studio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building.html#building-on-android">Building on Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building.html#building-on-ios">Building on iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building.html#customizing-the-build">Customizing the build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building.html#using-ceres-with-cmake">Using Ceres with CMake</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#hello-world">Hello World!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#derivatives">Derivatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#powell-s-function">Powell&#8217;s Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#curve-fitting">Curve Fitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#robust-curve-fitting">Robust Curve Fitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#bundle-adjustment">Bundle Adjustment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#other-examples">Other Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modeling.html">Modeling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modeling.html#costfunction"><tt class="docutils literal"><span class="pre">CostFunction</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling.html#sizedcostfunction"><tt class="docutils literal"><span class="pre">SizedCostFunction</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling.html#autodiffcostfunction"><tt class="docutils literal"><span class="pre">AutoDiffCostFunction</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling.html#dynamicautodiffcostfunction"><tt class="docutils literal"><span class="pre">DynamicAutoDiffCostFunction</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling.html#numericdiffcostfunction"><tt class="docutils literal"><span class="pre">NumericDiffCostFunction</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling.html#dynamicnumericdiffcostfunction"><tt class="docutils literal"><span class="pre">DynamicNumericDiffCostFunction</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling.html#numericdifffunctor"><tt class="docutils literal"><span class="pre">NumericDiffFunctor</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling.html#costfunctiontofunctor"><tt class="docutils literal"><span class="pre">CostFunctionToFunctor</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling.html#conditionedcostfunction"><tt class="docutils literal"><span class="pre">ConditionedCostFunction</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling.html#normalprior"><tt class="docutils literal"><span class="pre">NormalPrior</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling.html#lossfunction"><tt class="docutils literal"><span class="pre">LossFunction</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling.html#localparameterization"><tt class="docutils literal"><span class="pre">LocalParameterization</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling.html#autodifflocalparameterization"><tt class="docutils literal"><span class="pre">AutoDiffLocalParameterization</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling.html#problem"><tt class="docutils literal"><span class="pre">Problem</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling.html#rotation-h"><tt class="docutils literal"><span class="pre">rotation.h</span></tt></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="solving.html">Solving</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="solving.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solving.html#trust-region-methods">Trust Region Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solving.html#line-search-methods">Line Search Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solving.html#linearsolver">LinearSolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solving.html#covariance-estimation">Covariance Estimation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">FAQS, Tips &amp; Tricks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#building">Building</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modeling">Modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solving">Solving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#further-reading">Further Reading</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#setting-up-your-development-environment">Setting up your Development Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#submitting-a-change-to-ceres-solver">Submitting a change to Ceres Solver</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="version_history.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="version_history.html#id1">1.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_history.html#id2">1.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_history.html#id5">1.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_history.html#id9">1.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_history.html#id12">1.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_history.html#id16">1.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_history.html#id20">1.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_history.html#id23">1.2.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_history.html#id25">1.2.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_history.html#id27">1.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_history.html#id30">1.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_history.html#id33">1.1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_history.html#id35">1.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_history.html#id38">1.0.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="history.html#origin-of-the-name">Origin of the name</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Ceres Solver</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+          <div role="main">
+            
+  <div class="section" id="faqs-tips-tricks">
+<span id="chapter-tricks"></span><h1>FAQS, Tips &amp; Tricks<a class="headerlink" href="#faqs-tips-tricks" title="Permalink to this headline">¶</a></h1>
+<p>Answers to frequently asked questions, tricks of the trade and general
+wisdom.</p>
+<div class="section" id="building">
+<h2>Building<a class="headerlink" href="#building" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Use <a class="reference external" href="http://code.google.com/p/google-glog">google-glog</a>.</p>
+<p>Ceres has extensive support for logging detailed information about
+memory allocations and time consumed in various parts of the solve,
+internal error conditions etc. This is done logging using the
+<a class="reference external" href="http://code.google.com/p/google-glog">google-glog</a> library. We
+use it extensively to observe and analyze Ceres&#8217;s
+performance. <a class="reference external" href="http://code.google.com/p/google-glog">google-glog</a>
+allows you to control its behaviour from the command line <a class="reference external" href="http://google-glog.googlecode.com/svn/trunk/doc/glog.html">flags</a>. Starting
+with <tt class="docutils literal"><span class="pre">-logtostdterr</span></tt> you can add <tt class="docutils literal"><span class="pre">-v=N</span></tt> for increasing values
+of <tt class="docutils literal"><span class="pre">N</span></tt> to get more and more verbose and detailed information
+about Ceres internals.</p>
+<p>In an attempt to reduce dependencies, it is tempting to use
+<cite>miniglog</cite> - a minimal implementation of the <tt class="docutils literal"><span class="pre">glog</span></tt> interface
+that ships with Ceres. This is a bad idea. <tt class="docutils literal"><span class="pre">miniglog</span></tt> was written
+primarily for building and using Ceres on Android because the
+current version of <a class="reference external" href="http://code.google.com/p/google-glog">google-glog</a> does not build using the
+NDK. It has worse performance than the full fledged glog library
+and is much harder to control and use.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="modeling">
+<h2>Modeling<a class="headerlink" href="#modeling" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Use analytical/automatic derivatives.</p>
+<p>This is the single most important piece of advice we can give to
+you. It is tempting to take the easy way out and use numeric
+differentiation. This is a bad idea. Numeric differentiation is
+slow, ill-behaved, hard to get right, and results in poor
+convergence behaviour.</p>
+<p>Ceres allows the user to define templated functors which will
+be automatically differentiated. For most situations this is enough
+and we recommend using this facility. In some cases the derivatives
+are simple enough or the performance considerations are such that
+the overhead of automatic differentiation is too much. In such
+cases, analytic derivatives are recommended.</p>
+<p>The use of numerical derivatives should be a measure of last
+resort, where it is simply not possible to write a templated
+implementation of the cost function.</p>
+<p>In many cases it is not possible to do analytic or automatic
+differentiation of the entire cost function, but it is generally
+the case that it is possible to decompose the cost function into
+parts that need to be numerically differentiated and parts that can
+be automatically or analytically differentiated.</p>
+<p>To this end, Ceres has extensive support for mixing analytic,
+automatic and numeric differentiation. See
+<tt class="xref py py-class docutils literal"><span class="pre">NumericDiffFunctor</span></tt> and <tt class="xref py py-class docutils literal"><span class="pre">CostFunctionToFunctor</span></tt>.</p>
+</li>
+<li><p class="first">Putting <a class="reference external" href="http://en.wikipedia.org/wiki/Inverse_function_theorem">Inverse Function Theorem</a> to use.</p>
+<p>Every now and then we have to deal with functions which cannot be
+evaluated analytically. Computing the Jacobian in such cases is
+tricky. A particularly interesting case is where the inverse of the
+function is easy to compute analytically. An example of such a
+function is the Coordinate transformation between the <a class="reference external" href="http://en.wikipedia.org/wiki/ECEF">ECEF</a> and the <a class="reference external" href="http://en.wikipedia.org/wiki/World_Geodetic_System">WGS84</a> where the
+conversion from WGS84 from ECEF is analytic, but the conversion
+back to ECEF uses an iterative algorithm. So how do you compute the
+derivative of the ECEF to WGS84 transformation?</p>
+<p>One obvious approach would be to numerically
+differentiate the conversion function. This is not a good idea. For
+one, it will be slow, but it will also be numerically quite
+bad.</p>
+<p>Turns out you can use the <a class="reference external" href="http://en.wikipedia.org/wiki/Inverse_function_theorem">Inverse Function Theorem</a> in this
+case to compute the derivatives more or less analytically.</p>
+<p>The key result here is. If <span class="math">\(x = f^{-1}(y)\)</span>, and <span class="math">\(Df(x)\)</span>
+is the invertible Jacobian of <span class="math">\(f\)</span> at <span class="math">\(x\)</span>. Then the
+Jacobian <span class="math">\(Df^{-1}(y) = [Df(x)]^{-1}\)</span>, i.e., the Jacobian of
+the <span class="math">\(f^{-1}\)</span> is the inverse of the Jacobian of <span class="math">\(f\)</span>.</p>
+<p>Algorithmically this means that given <span class="math">\(y\)</span>, compute <span class="math">\(x =
+f^{-1}(y)\)</span> by whatever means you can. Evaluate the Jacobian of
+<span class="math">\(f\)</span> at <span class="math">\(x\)</span>. If the Jacobian matrix is invertible, then
+the inverse is the Jacobian of the inverse at <span class="math">\(y\)</span>.</p>
+<p>One can put this into practice with the following code fragment.</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="n">ecef</span><span class="p">;</span> <span class="c1">// Fill some values</span>
+<span class="c1">// Iterative computation.</span>
+<span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="n">lla</span> <span class="o">=</span> <span class="n">ECEFToLLA</span><span class="p">(</span><span class="n">ecef</span><span class="p">);</span>
+<span class="c1">// Analytic derivatives</span>
+<span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span> <span class="n">lla_to_ecef_jacobian</span> <span class="o">=</span> <span class="n">LLAToECEFJacobian</span><span class="p">(</span><span class="n">lla</span><span class="p">);</span>
+<span class="kt">bool</span> <span class="n">invertible</span><span class="p">;</span>
+<span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span> <span class="n">ecef_to_lla_jacobian</span><span class="p">;</span>
+<span class="n">lla_to_ecef_jacobian</span><span class="p">.</span><span class="n">computeInverseWithCheck</span><span class="p">(</span><span class="n">ecef_to_lla_jacobian</span><span class="p">,</span> <span class="n">invertible</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">When using Quaternions, use <tt class="xref py py-class docutils literal"><span class="pre">QuaternionParameterization</span></tt>.</p>
+<p>TBD</p>
+</li>
+<li><p class="first">How to choose a parameter block size?</p>
+<p>TBD</p>
+</li>
+</ol>
+</div>
+<div class="section" id="solving">
+<h2>Solving<a class="headerlink" href="#solving" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Choosing a linear solver.</p>
+<p>When using the <tt class="docutils literal"><span class="pre">TRUST_REGION</span></tt> minimizer, the choice of linear
+solver is an important decision. It affects solution quality and
+runtime. Here is a simple way to reason about it.</p>
+<ol class="arabic">
+<li><p class="first">For small (a few hundred parameters) or dense problems use
+<tt class="docutils literal"><span class="pre">DENSE_QR</span></tt>.</p>
+</li>
+<li><p class="first">For general sparse problems (i.e., the Jacobian matrix has a
+substantial number of zeros) use
+<tt class="docutils literal"><span class="pre">SPARSE_NORMAL_CHOLESKY</span></tt>. This requires that you have
+<tt class="docutils literal"><span class="pre">SuiteSparse</span></tt> or <tt class="docutils literal"><span class="pre">CXSparse</span></tt> installed.</p>
+</li>
+<li><p class="first">For bundle adjustment problems with up to a hundred or so
+cameras, use <tt class="docutils literal"><span class="pre">DENSE_SCHUR</span></tt>.</p>
+</li>
+<li><p class="first">For larger bundle adjustment problems with sparse Schur
+Complement/Reduced camera matrices use <tt class="docutils literal"><span class="pre">SPARSE_SCHUR</span></tt>. This
+requires that you have <tt class="docutils literal"><span class="pre">SuiteSparse</span></tt> or <tt class="docutils literal"><span class="pre">CXSparse</span></tt>
+installed.</p>
+</li>
+<li><p class="first">For large bundle adjustment problems (a few thousand cameras or
+more) use the <tt class="docutils literal"><span class="pre">ITERATIVE_SCHUR</span></tt> solver. There are a number of
+preconditioner choices here. <tt class="docutils literal"><span class="pre">SCHUR_JACOBI</span></tt> offers an
+excellent balance of speed and accuracy. This is also the
+recommended option if you are solving medium sized problems for
+which <tt class="docutils literal"><span class="pre">DENSE_SCHUR</span></tt> is too slow but <tt class="docutils literal"><span class="pre">SuiteSparse</span></tt> is not
+available.</p>
+<p>If you are not satisfied with <tt class="docutils literal"><span class="pre">SCHUR_JACOBI</span></tt>&#8216;s performance try
+<tt class="docutils literal"><span class="pre">CLUSTER_JACOBI</span></tt> and <tt class="docutils literal"><span class="pre">CLUSTER_TRIDIAGONAL</span></tt> in that
+order. They require that you have <tt class="docutils literal"><span class="pre">SuiteSparse</span></tt>
+installed. Both of these preconditioners use a clustering
+algorithm. Use <tt class="docutils literal"><span class="pre">SINGLE_LINKAGE</span></tt> before <tt class="docutils literal"><span class="pre">CANONICAL_VIEWS</span></tt>.</p>
+</li>
+</ol>
+</li>
+<li><p class="first">Use <cite>Solver::Summary::FullReport</cite> to diagnose performance problems.</p>
+<p>When diagnosing Ceres performance issues - runtime and convergence,
+the first place to start is by looking at the output of
+<tt class="docutils literal"><span class="pre">Solver::Summary::FullReport</span></tt>. Here is an example</p>
+<div class="highlight-bash"><div class="highlight"><pre>./bin/bundle_adjuster --input ../data/problem-16-22106-pre.txt
+
+
+0: f: 4.185660e+06 d: 0.00e+00 g: 2.16e+07 h: 0.00e+00 rho: 0.00e+00 mu: 1.00e+04 li:  0 it: 9.20e-02 tt: 3.35e-01
+1: f: 1.980525e+05 d: 3.99e+06 g: 5.34e+06 h: 2.40e+03 rho: 9.60e-01 mu: 3.00e+04 li:  1 it: 1.99e-01 tt: 5.34e-01
+2: f: 5.086543e+04 d: 1.47e+05 g: 2.11e+06 h: 1.01e+03 rho: 8.22e-01 mu: 4.09e+04 li:  1 it: 1.61e-01 tt: 6.95e-01
+3: f: 1.859667e+04 d: 3.23e+04 g: 2.87e+05 h: 2.64e+02 rho: 9.85e-01 mu: 1.23e+05 li:  1 it: 1.63e-01 tt: 8.58e-01
+4: f: 1.803857e+04 d: 5.58e+02 g: 2.69e+04 h: 8.66e+01 rho: 9.93e-01 mu: 3.69e+05 li:  1 it: 1.62e-01 tt: 1.02e+00
+5: f: 1.803391e+04 d: 4.66e+00 g: 3.11e+02 h: 1.02e+01 rho: 1.00e+00 mu: 1.11e+06 li:  1 it: 1.61e-01 tt: 1.18e+00
+
+Ceres Solver Report
+-------------------
+                                     Original                  Reduced
+Parameter blocks                        22122                    22122
+Parameters                              66462                    66462
+Residual blocks                         83718                    83718
+Residual                               167436                   167436
+
+Minimizer                        TRUST_REGION
+
+Sparse linear algebra library    SUITE_SPARSE
+Trust region strategy     LEVENBERG_MARQUARDT
+
+                                         Given                     Used
+Linear solver                    SPARSE_SCHUR             SPARSE_SCHUR
+Threads                                     1                        1
+Linear solver threads                       1                        1
+Linear solver ordering              AUTOMATIC                22106, 16
+
+Cost:
+Initial                          4.185660e+06
+Final                            1.803391e+04
+Change                           4.167626e+06
+
+Minimizer iterations                        5
+Successful steps                            5
+Unsuccessful steps                          0
+
+Time <span class="o">(</span>in seconds<span class="o">)</span>:
+Preprocessor                            0.243
+
+  Residual evaluation                   0.053
+  Jacobian evaluation                   0.435
+  Linear solver                         0.371
+Minimizer                               0.940
+
+Postprocessor                           0.002
+Total                                   1.221
+
+Termination:                   NO_CONVERGENCE <span class="o">(</span>Maximum number of iterations reached.<span class="o">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<blockquote>
+<div><p>Let us focus on run-time performance. The relevant lines to look at
+are</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre>Time <span class="o">(</span>in seconds<span class="o">)</span>:
+Preprocessor                            0.243
+
+  Residual evaluation                   0.053
+  Jacobian evaluation                   0.435
+  Linear solver                         0.371
+Minimizer                               0.940
+
+Postprocessor                           0.002
+Total                                   1.221
+</pre></div>
+</div>
+</div></blockquote>
+<p>Which tell us that of the total 1.2 seconds, about .4 seconds was
+spent in the linear solver and the rest was mostly spent in
+preprocessing and jacobian evaluation.</p>
+<p>The preprocessing seems particularly expensive. Looking back at the
+report, we observe</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre>Linear solver ordering              AUTOMATIC                22106, 16
+</pre></div>
+</div>
+</div></blockquote>
+<p>Which indicates that we are using automatic ordering for the
+<tt class="docutils literal"><span class="pre">SPARSE_SCHUR</span></tt> solver. This can be expensive at times. A straight
+forward way to deal with this is to give the ordering manually. For
+<tt class="docutils literal"><span class="pre">bundle_adjuster</span></tt> this can be done by passing the flag
+<tt class="docutils literal"><span class="pre">-ordering=user</span></tt>. Doing so and looking at the timing block of the
+full report gives us</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre>Time <span class="o">(</span>in seconds<span class="o">)</span>:
+Preprocessor                            0.058
+
+  Residual evaluation                   0.050
+  Jacobian evaluation                   0.416
+  Linear solver                         0.360
+Minimizer                               0.903
+
+Postprocessor                           0.002
+Total                                   0.998
+</pre></div>
+</div>
+</div></blockquote>
+<p>The preprocessor time has gone down by more than 4x!.</p>
+</div></blockquote>
+</div>
+<div class="section" id="further-reading">
+<h2>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
+<p>For a short but informative introduction to the subject we recommend
+the booklet by <a class="reference internal" href="bibliography.html#madsen" id="id5">[Madsen]</a> . For a general introduction to non-linear
+optimization we recommend <a class="reference internal" href="bibliography.html#nocedalwright" id="id6">[NocedalWright]</a>. <a class="reference internal" href="bibliography.html#bjorck" id="id7">[Bjorck]</a> remains the
+seminal reference on least squares problems. <a class="reference internal" href="bibliography.html#trefethenbau" id="id8">[TrefethenBau]</a> book is
+our favorite text on introductory numerical linear algebra. <a class="reference internal" href="bibliography.html#triggs" id="id9">[Triggs]</a>
+provides a thorough coverage of the bundle adjustment problem.</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="contributing.html" class="btn btn-neutral float-right" title="Contributing"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="solving.html" class="btn btn-neutral" title="Solving"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 Google Inc.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.9.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+      MathJax.Hub.Config({
+          "HTML-CSS": {
+            availableFonts: ["TeX"]
+          }
+        });
+      </script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49769510-1', 'ceres-solver.org');
+  ga('send', 'pageview');
+</script>
+
+
+</body>
+</html>

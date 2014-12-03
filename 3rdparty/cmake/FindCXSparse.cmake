@@ -1,0 +1,9 @@
+if(NOT SuiteSparse_INCLUDE_DIRS OR NOT SuiteSparse_LIBRARIES)
+    find_package(SuiteSparse REQUIRED NO_MODULE QUIET PATHS "${EP_PREFIX}")
+    include(${USE_SuiteSparse})
+endif()
+set(CXSPARSE_FOUND true CACHE BOOLEAN "")
+set(CXSPARSE_INCLUDE_DIRS ${SuiteSparse_INCLUDE_DIRS} CACHE STRING "")
+set(CXSPARSE_LIBRARIES ${SuiteSparse_LIBRARIES} CACHE STRING "")
+
+

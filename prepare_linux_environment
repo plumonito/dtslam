@@ -1,0 +1,60 @@
+#!/bin/bash
+
+if ! { lsb_release -i | grep -i ubuntu > /dev/null; }; then
+    echo "Must be running Ubuntu >= 12.04";
+    exit 1;
+fi
+
+echo "Adding additional software repositories -------------------------------"
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+if ! sudo apt-get update; then
+    echo "Error updating apt package database";
+    exit 2;
+fi
+
+echo "Installing g++-4.8 ----------------------------------------------------"
+if ! sudo apt-get install g++-4.8 cmake; then
+    echo "Error installing g++-4.8 and/or cmake-3.0";
+    exit 3;
+fi
+
+echo "Setting g++-4.8 to be the default system compiler ---------------------"
+sudo update-alternatives --remove-all gcc
+sudo update-alternatives --remove-all g++
+if ! ( sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 20 &&
+       sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 20 &&
+       sudo update-alternatives --config gcc &&
+       sudo update-alternatives --config g++ ); then
+    echo "Error updating default g++ to version 4.8";
+fi
+
+echo "Installing OpenGL development libraries -------------------------------"
+if ! sudo apt-get install nvidia-current-dev; then
+    echo "Error installing OpenGL development libraries";
+    exit 4;
+fi
+
+echo "Installing additional libraries ---------------------------------------"
+if ! sudo apt-get install libglu1-mesa-dev libxi-dev liblapack-dev libv4l-dev libavcodec-dev libavutil-dev libavformat-dev libswscale-dev libavdevice-dev; then
+    echo "Error installing additional libraries";
+    exit 5;
+fi
+
+echo "Downloading cmake-3.0.2 source code -----------------------------------"
+
+if ! { wget http://www.cmake.org/files/v3.0/cmake-3.0.2.tar.gz -O - | tar xz -C /tmp; }; then
+    echo "Error downloading cmake-3.0.2 source code"
+    exit 6;
+fi
+
+orig_pwd=`pwd`
+
+if ! { cd /tmp/cmake-3.0.2 && ./bootstrap && make -j4 && sudo make install; }; then
+    echo "Cannot compile and install cmake-3.0.2";
+    exit 7;
+fi
+
+echo "Removing possibly installed old cmake --------------------------------"
+sudo apt-get remove cmake
+
+echo "Environment set up successfully, have a nice day!"

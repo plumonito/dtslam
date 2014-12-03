@@ -1,0 +1,10 @@
+#This is a flagfile. Pass it to the slam application with the -flagfile switch.
+ -CameraFx=1803.70267428
+ -CameraFy=1803.70267428
+ -CameraU0=816.961496961
+ -CameraV0=586.608368412
+ -CameraK1=-0.228728298249
+ -CameraK2=0.204354044984
+ -CameraWidth=1600
+ -CameraHeight=1200
+       
