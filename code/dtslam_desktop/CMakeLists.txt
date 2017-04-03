@@ -21,6 +21,9 @@ list(APPEND sources_h "${PROJECT_SOURCE_DIR}/dtslam_ui/SlamDriver.h")
 #Important to add the MainDriver.h file so that the project recompiles when it changes.
 add_executable(dtslam_desktop ${sources_cpp} ${sources_h})
 target_link_libraries (dtslam_desktop dtslam_ui dtslam freeglut) 
+if(NOT WIN32)
+    target_link_libraries(dtslam_desktop X11)
+endif()
 
 #INSTALL_TARGET_WITH_DEPS(dtslam_desktop ${3RD_PARTY_DIR}/bin)
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/dtslam/assets DESTINATION .)

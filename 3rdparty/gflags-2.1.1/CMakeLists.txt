@@ -222,6 +222,10 @@ configure_sources (GFLAGS_SRCS  ${GFLAGS_SRCS})
 include_directories ("${PROJECT_SOURCE_DIR}/src")
 include_directories ("${PROJECT_BINARY_DIR}/include")
 include_directories ("${PROJECT_BINARY_DIR}/include/${GFLAGS_INCLUDE_DIR}")
+#Dirty hack: include directories is being ignored, hard-code it here
+add_definitions (-I"${PROJECT_SOURCE_DIR}/src")
+add_definitions (-I"${PROJECT_BINARY_DIR}/include")
+add_definitions (-I"${PROJECT_BINARY_DIR}/include/${GFLAGS_INCLUDE_DIR}")
 
 # ----------------------------------------------------------------------------
 # output directories

@@ -30,7 +30,7 @@ macro(ConfigExternalProject NAME)
         set(BUILD_TYPES ${CMAKE_BUILD_TYPE})
     endif()
 
-    if(BUILD_TYPES STREQUAL "")
+    if("${BUILD_TYPES}" STREQUAL "")
         set(BUILD_TYPES Release)
     endif()
 
