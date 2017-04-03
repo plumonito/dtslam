@@ -40,6 +40,7 @@ ConfigExternalProject(OpenCV
                      -DBUILD_DOCS:BOOL=OFF
                      -DBUILD_ANDROID_EXAMPLES:BOOL=OFF
                      -DBUILD_WITH_STATIC_CRT:BOOL=OFF
+                     -DUSE_FFMPEG:BOOL=ON
                      -DWITH_TESTS:BOOL=OFF)
 set(OpenCV_STATIC OFF CACHE BOOL "")
 list(APPEND DEBUG_DLL_GLOB_PATTERNS "${EP_PREFIX}/${OpenCV_ARCH}/${OpenCV_RUNTIME}/bin/*0d.dll")

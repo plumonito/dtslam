@@ -35,7 +35,7 @@ if ! sudo apt-get install nvidia-current-dev; then
 fi
 
 echo "Installing additional libraries ---------------------------------------"
-if ! sudo apt-get install libatlas-base-dev libglu1-mesa-dev libxi-dev liblapack-dev libv4l-dev libavcodec-dev libavutil-dev libavformat-dev libswscale-dev libavdevice-dev; then
+if ! sudo apt-get install libglu1-mesa-dev libxi-dev liblapack-dev libv4l-dev libavcodec-dev libavutil-dev libavformat-dev libswscale-dev libavdevice-dev; then
     echo "Error installing additional libraries";
     exit 5;
 fi
